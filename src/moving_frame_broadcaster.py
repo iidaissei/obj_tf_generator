@@ -1,4 +1,5 @@
-#!/usr/bin/env python  
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import rospy
 import tf2_ros
 import tf2_msgs.msg
@@ -15,12 +16,12 @@ class FixedTFBroadcaster:
             rospy.sleep(0.1)
 
             t = geometry_msgs.msg.TransformStamped()
-            t.header.frame_id = "camera_bottom_link"
+            t.header.frame_id = "camera_depth_frame"
             t.header.stamp = rospy.Time.now()
             t.child_frame_id = "fixed_human"
             # この下にオフセットの値を追加する
-            t.transform.translation.x = 0.0
-            t.transform.translation.y = 0.0
+            t.transform.translation.x = 1.0
+            t.transform.translation.y = 0.5
             t.transform.translation.z = 0.0
 
             t.transform.rotation.x = 0.0

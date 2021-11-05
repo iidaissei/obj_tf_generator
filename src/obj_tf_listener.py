@@ -1,4 +1,4 @@
-#!/usr/bin/env python  
+#!/usr/bin/env python
 import rospy
 
 import math
@@ -13,7 +13,8 @@ if __name__ == '__main__':
     rate = rospy.Rate(10.0)
     while not rospy.is_shutdown():
         try:
-            trans = tfBuffer.lookup_transform('fixed_human', 'map', rospy.Time())
+            trans = tfBuffer.lookup_transform('map','fixed_human', rospy.Time())
+            print trans
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
             rate.sleep()
             continue
